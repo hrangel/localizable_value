@@ -4,6 +4,7 @@ module LocalizableValue
   # Your code goes here...
 end
 
+require 'localizable_value/engine'
 require "localizable_value/railtie"
 require "localizable_value/app/uploaders/localizable_image_uploader"
 require "localizable_value/app/models/localized_page"
