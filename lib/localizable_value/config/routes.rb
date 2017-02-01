@@ -1,3 +1,5 @@
 LocalizableValue::Engine.routes do
-  resources :localized_values
+  namespace :localizable_value do
+    resources :localized_values, only: [:update]
+  end
 end
