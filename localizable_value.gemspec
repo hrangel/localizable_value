@@ -5,7 +5,7 @@ require 'localizable_value/version'
 
 Gem::Specification.new do |spec|
   spec.name          = "localizable_value"
-  spec.version       = InplaceEditing::VERSION
+  spec.version       = LocalizableValue::VERSION
   spec.authors       = ["Henrique Rangel"]
   spec.email         = ["dev@hrangel.com.br"]
 
