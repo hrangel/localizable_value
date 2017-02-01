@@ -13,6 +13,6 @@
 
 module LocalizableValue
   class LocalizedImage < LocalizedValue
-    mount_uploader :value, RegularUploader
+    mount_uploader :value, LocalizableImageUploader
   end
 end

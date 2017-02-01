@@ -5,6 +5,7 @@ module LocalizableValue
 end
 
 require "localizable_value/railtie"
+require "localizable_value/app/uploaders/localizable_image_uploader"
 require "localizable_value/app/models/localized_page"
 require "localizable_value/app/models/localized_value"
 require "localizable_value/app/models/localized_image"
