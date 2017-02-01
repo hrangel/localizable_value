@@ -13,18 +13,21 @@ module LocalizableValue
   class LocalizedPage < ActiveRecord::Base
     has_many :localized_values, dependent: :destroy
 
-    def self.get_by_current_locale
-      LocalizedPage.by_locale(I18n.locale.to_s.downcase)
+    def self.global_page
+      @@global_page ||= LocalizedPage.by_locale(I18n.locale.to_s.downcase, 'GLOBAL')
     end
 
-    def self.by_locale(locale)
-      LocalizedPage.find_or_create_by(locale: locale.to_s.downcase)
+    def self.current_page(controller_name, action_name)
+      LocalizedPage.by_locale(I18n.locale.to_s.downcase, controller_name + '#' + action_name)
+    end
+
+    def self.by_locale(locale, page_uid)
+      LocalizedPage.find_or_create_by(locale: locale.to_s.downcase, page_uid: page_uid)
     end
 
     def get_value(key, default_value, type = nil)
-      value = localized_values.find_or_create_by(localized_page: self, key: key, type: type) do |new_value|
-        new_value.value = default_value
-      end
+      value = localized_values.select { |v| v.key == key && v.type == type }.first
+      value = localized_values.create(localized_page: self, key: key, type: type, value: default_value) if !value
       value
     end
 
