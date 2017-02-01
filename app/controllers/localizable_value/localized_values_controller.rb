@@ -1,5 +1,5 @@
 module LocalizableValue
-  class LocalizedValueController < ApplicationController
+  class LocalizedValuesController < ApplicationController
     respond_to :html, :json
 
     skip_before_action :verify_authenticity_token
