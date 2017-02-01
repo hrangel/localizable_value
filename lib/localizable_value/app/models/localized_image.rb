@@ -11,8 +11,11 @@
 #  type              :string
 #
 
+require 'carrierwave'
+require 'carrierwave/orm/activerecord'
+
 module LocalizableValue
-  class LocalizedImage < LocalizedValue
+  class LocalizedImage < LocalizableValue::LocalizedValue
     mount_uploader :value, LocalizableImageUploader
   end
 end
