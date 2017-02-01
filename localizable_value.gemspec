@@ -10,10 +10,10 @@ Gem::Specification.new do |spec|
   spec.email         = ["dev@hrangel.com.br"]
 
   spec.summary       = <<SUM
-  TODO
+  Gem to allow easy editable localized text and other elements
 SUM
   spec.description   = <<DESC
-  TODO
+  Gem to allow easy editable localized text and other elements
 DESC
   spec.homepage      = "https://github.com/hrangel/localizable_value"
   spec.license       = "MIT"

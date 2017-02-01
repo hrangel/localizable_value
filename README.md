@@ -20,9 +20,61 @@ Or install it yourself as:
 
     $ gem install localizable_value
 
+Then, create tables:
+
+    $ rake localizable:setup
+
+Add to the controllers you want (e.g. ApplicationController)
+```ruby
+before_action :set_editor_config
+before_action :set_localizable_pages
+
+# Inplace Editor config
+def set_editor_config
+  @can_edit = false # or true
+  @inplace_editing_mode = (@can_edit ? 'edit' : 'read')
+end
+
+# set pages
+
+def set_localizable_pages
+  @global_page = LocalizableValue::LocalizedPage.global_page
+  @current_page = LocalizableValue::LocalizedPage.current_page(controller_name, action_name)
+end
+```
+
+Don't forget to add scripts
+
+    //= require jquery
+    //= require best_in_place
+    //= require inplace_editing
+
+    $(document).ready(function() {
+      /* Activating Best In Place */
+      jQuery(".best_in_place").best_in_place();
+    });
+
+
 ## Usage
 
-TODO: Write usage instructions here
+The exambple belows considers you are using @global_page and @current_page
+
+```slim
+- # editable h1
+h1 = localized_value_string(@current_page, 'main-title', 'My Main Title')
+
+- # read only h1
+h1 = localized_value_string_read(@current_page, 'main-title', 'My Main Title')
+
+- # editable text section
+div.text = localized_value_text(@current_page, 'main-text', 'My Main Text with markdown')
+
+- # others
+= localized_value_element(page, key, default_value, label)
+= localized_value_link(page, key, default_value, link)
+= localized_value_link_attr(page, key, default_value, link_attrs)
+
+```
 
 ## Development
 
