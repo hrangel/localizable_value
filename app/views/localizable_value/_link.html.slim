@@ -1,0 +1,8 @@
+- localized_value = localized_page.get_value(key, default_value)
+- if @can_edit
+  .best_link
+    = string_editor(localized_value, :value, "[troque o texto aqui]")
+    a href="#{link}"  
+      i.fa.fa-sign-in
+- else
+  a href="#{link}" = render partial: 'localizable_value/string_read', :locals => { localized_page: localized_page, :key => key, default_value: default_value }
