@@ -22,9 +22,9 @@ module LocalizableValue
 
       def localized_value_params
         if params.key? :localized_image
-          params.require(:localized_image).permit(:value)
+          params.require(:localizable_value_localized_value).permit(:value)
         else
-          params.require(:localized_value).permit(:value)
+          params.require(:localizable_value_localized_value).permit(:value)
         end
       end
   end
