@@ -39,7 +39,10 @@ end
 
 def set_localizable_pages
   @global_page = LocalizableValue::LocalizedPage.global_page
-  @current_page = LocalizableValue::LocalizedPage.current_page(controller_name, action_name)
+
+  route_control = controller_name ? controller_name : 'root'
+  route_action = action_name ? action_name : 'home'
+  @current_page = LocalizableValue::LocalizedPage.current_page(route_control, route_action)
 end
 ```
 
