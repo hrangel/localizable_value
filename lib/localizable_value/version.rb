@@ -1,3 +1,3 @@
 module LocalizableValue
-  VERSION = "0.1.22"
+  VERSION = "0.1.25"
 end
