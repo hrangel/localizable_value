@@ -1,5 +1,5 @@
 - local_assigns[:localized_object] = localized_page.get_value(key, default_value) if !local_assigns[:localized_object]
 - local_assigns[:property] = :value if !local_assigns[:property]
 
-= element_editor(localized_object, property, local_assigns[:place_holder], local_assigns[:label]) do |args|
+= element_editor(local_assigns[:localized_object], local_assigns[:property], local_assigns[:place_holder], local_assigns[:label]) do |args|
   = yield args
