@@ -1,5 +1,5 @@
 module LocalizableValue
-  class LocalizedValuesController < ApplicationController
+  class LocalizedImagesController < ApplicationController
     respond_to :html, :json
 
     skip_before_action :verify_authenticity_token
@@ -17,11 +17,11 @@ module LocalizableValue
       end
 
       def require_value
-        @localized_value = LocalizedValue.find(params[:id])
+        @localized_value = LocalizedImage.find(params[:id])
       end
 
       def localized_value_params
-        params.require(:localizable_value_localized_value).permit(:value)
+        params.require(:localizable_value_localized_image).permit(:value, :value_cache)
       end
   end
 end

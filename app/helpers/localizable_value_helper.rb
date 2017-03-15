@@ -24,4 +24,12 @@ module LocalizableValueHelper
   def localized_value_link_attr(page, key, default_value, attrs)
     render partial: 'localizable_value/link_attr', :locals => { localized_page: page, key: key, default_value: default_value, attrs: attrs }
   end
+
+  def localized_string(localized_page, key, default)
+    localized_page.get_value(key, default)
+  end
+
+  def localized_image(localized_page, key, default)
+    localized_page.get_value(key, default, LocalizableValue::LocalizedImage.name)
+  end
 end
