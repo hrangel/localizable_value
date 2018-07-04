@@ -8,6 +8,8 @@ module LocalizableValue
 
     def update
       @localized_value.update(localized_value_params)
+      @localized_value.localized_page.reset_cache if @localized_value.localized_page
+      after_localizable_value_changed(@localized_value) if respond_to?(:after_localizable_value_changed)
       respond_with(@localized_value)
     end
 

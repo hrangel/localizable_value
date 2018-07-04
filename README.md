@@ -49,12 +49,13 @@ end
 Don't forget to add scripts
 
     //= require jquery
+    //= require jquery_ujs
     //= require best_in_place
     //= require inplace_editing
 
     $(document).ready(function() {
-      /* Activating Best In Place */
-      jQuery(".best_in_place").best_in_place();
+      /* Activating InPlace Editor */
+      InplaceEditingManager.bindAll();
     });
 
 

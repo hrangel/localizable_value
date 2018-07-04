@@ -25,6 +25,10 @@ module LocalizableValue
       LocalizedPage.find_or_create_by(locale: locale.to_s.downcase, page_uid: page_uid)
     end
 
+    def reset_cache
+      localized_values(true).count
+    end
+
     def get_value(key, default_value, type = nil)
       value = localized_values.select { |v| v.key == key && v.type == type }.first
       value = localized_values.create(localized_page: self, key: key, type: type, value: default_value) if !value
